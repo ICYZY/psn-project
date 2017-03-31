@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'pg'
+gem 'sqlite3'
 gem 'devise'  
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -51,6 +51,7 @@ group :development do
 end
 
 group :production do
+  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
