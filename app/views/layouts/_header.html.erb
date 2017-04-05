@@ -4,11 +4,9 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">    
       <% if user_signed_in? %>
-        <li><a><%= image_tag(current_user.image, alt: "Profile Image", size: 30) %><span><%= current_user.name %></span></a></li>
+        <li><a id="profile"><%= image_tag(current_user.image, alt: "Profile Image", size: 25) %><span><%= current_user.name %></span></a></li>
         <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
       <% else %>
-        <li><%= link_to 'Login', new_user_session_path %></li>
-        <li><%= link_to 'SignUp', new_user_registration_path %></li>
         <li><%= link_to 'Login with Facebook', user_facebook_omniauth_authorize_path %></li>
       <% end %>
       </ul>
