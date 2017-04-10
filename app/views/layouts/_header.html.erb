@@ -3,6 +3,7 @@
     <%= link_to "Home", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">    
+        <li class="cart-text"><%= render 'layouts/cart_text' %></li>
       <% if user_signed_in? %>
         <li><a id="profile"><%= image_tag(current_user.image, alt: "Profile Image", size: 25) %><span><%= current_user.name %></span></a></li>
         <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
