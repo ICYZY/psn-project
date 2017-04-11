@@ -1,8 +1,15 @@
 class OrderItemsController < ApplicationController
   def create
     @order = current_order
-    @order_item = @order.order_items.new(order_item_params)
-    @order.save
+    @neworderid = order_item_params[:product_id]
+    if @order.order_items.find_by(product_id: @neworderid)
+      @order_item = @order.order_items.find_by(product_id: @neworderid)
+      @new_quantity = (@order_item.quantity + order_item_params[:quantity].to_i).to_s
+      @order_item.update_attribute(:quantity, @new_quantity)
+    else
+      @order_item = @order.order_items.new(order_item_params)
+      @order.save
+    end
     session[:order_id] = @order.id
   end
 
